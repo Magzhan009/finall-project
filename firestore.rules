@@ -1,0 +1,122 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userDocPath(uid) {
+      return /databases/$(database)/documents/users/$(uid);
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && exists(userDocPath(request.auth.uid))
+        && get(userDocPath(request.auth.uid)).data.role == 'admin';
+    }
+
+    function hasMessageFields(data) {
+      return data.keys().hasAll([
+        'id',
+        'chatId',
+        'senderId',
+        'senderName',
+        'text',
+        'imageBase64',
+        'imageUrl',
+        'storagePath',
+        'type',
+        'createdAt',
+        'updatedAt',
+        'isEdited'
+      ]) && data.keys().hasOnly([
+        'id',
+        'chatId',
+        'senderId',
+        'senderName',
+        'text',
+        'imageBase64',
+        'imageUrl',
+        'storagePath',
+        'type',
+        'createdAt',
+        'updatedAt',
+        'isEdited'
+      ]);
+    }
+
+    function hasBaseMessageTypes(data) {
+      return data.id is string
+        && data.chatId is string
+        && data.senderId is string
+        && data.senderName is string
+        && data.text is string
+        && data.imageBase64 is string
+        && (data.imageUrl == null || data.imageUrl is string)
+        && (data.storagePath == null || data.storagePath is string)
+        && data.type is string
+        && data.createdAt is timestamp
+        && data.updatedAt is timestamp
+        && data.isEdited is bool;
+    }
+
+    function validTextMessage(data) {
+      return data.type == 'text'
+        && data.text.size() > 0
+        && data.imageBase64 == ''
+        && data.imageUrl == ''
+        && data.storagePath == '';
+    }
+
+    function validImageMessage(data) {
+      return data.type == 'image'
+        && data.text == ''
+        && data.imageBase64.size() > 0
+        && data.imageBase64.size() <= 900000
+        && data.imageUrl == null
+        && data.storagePath == null;
+    }
+
+    match /users/{userId} {
+      allow read: if signedIn() && (request.auth.uid == userId || isAdmin());
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.role == 'student';
+      allow update: if isAdmin()
+        || (signedIn()
+          && request.auth.uid == userId
+          && request.resource.data.role == resource.data.role);
+    }
+
+    match /chats/{chatId}/messages/{messageId} {
+      allow read: if signedIn();
+
+      allow create: if signedIn()
+        && hasMessageFields(request.resource.data)
+        && hasBaseMessageTypes(request.resource.data)
+        && request.resource.data.id == messageId
+        && request.resource.data.chatId == chatId
+        && request.resource.data.senderId == request.auth.uid
+        && request.resource.data.senderName.size() > 0
+        && request.resource.data.isEdited == false
+        && (validTextMessage(request.resource.data)
+          || validImageMessage(request.resource.data));
+
+      allow update: if signedIn()
+        && resource.data.senderId == request.auth.uid
+        && resource.data.type == 'text'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'text',
+          'updatedAt',
+          'isEdited'
+        ])
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0
+        && request.resource.data.updatedAt is timestamp
+        && request.resource.data.isEdited == true;
+
+      allow delete: if signedIn() && resource.data.senderId == request.auth.uid;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "52976884725",
+    "project_id": "finall-project-e5ed2",
+    "storage_bucket": "finall-project-e5ed2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52976884725:android:a2131577e185f066781ebc",
+        "android_client_info": {
+          "package_name": "com.magzhan.bookingjihc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "52976884725-b8909itrvsgd3ur4bpsbnve5723fjnkj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.magzhan.bookingjihc",
+            "certificate_hash": "d91ac2cd984ee134b68a7a42899e1f56d567d181"
+          }
+        },
+        {
+          "client_id": "52976884725-3fki6fc13i1vp31lhbjqt7dpmgp06ufa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo1nyyYCIEwkxhP4FC5JBLxCvprnpRDIU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "52976884725-3fki6fc13i1vp31lhbjqt7dpmgp06ufa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
