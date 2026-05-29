@@ -72,21 +72,25 @@ The app uses Firebase Authentication, Cloud Firestore, and real-time data synchr
 
 ### Home Screen
 
-<img width="658" height="1458" alt="image" src="https://github.com/user-attachments/assets/f4200114-076e-4d76-ae15-d687b4b67465" />
+<img width="644" height="1384" alt="image" src="https://github.com/user-attachments/assets/fb8775e2-fc46-4744-98e7-5f4853c94a22" />
+
 
 
 ### Booking Screen
-<img width="658" height="1458" alt="image" src="https://github.com/user-attachments/assets/b8477e35-7af2-4b8e-9afb-33b54fae3617" />
+<img width="624" height="1434" alt="image" src="https://github.com/user-attachments/assets/abc7e47d-dcb2-42c4-b7f9-d3bb2fd761de" />
+
 
 
 ### Chat Screen
 
-<img width="658" height="1458" alt="image" src="https://github.com/user-attachments/assets/d9375c9b-30b1-4412-933f-d78b7c14f750" />
+<img width="630" height="1402" alt="image" src="https://github.com/user-attachments/assets/a02445a6-f033-4666-a052-4ca13491297e" />
+
 
 
 ### Profile Screen
 
-<img width="658" height="1458" alt="image" src="https://github.com/user-attachments/assets/f97dd925-1ef9-47a6-b0df-e02350258d9c" />
+<img width="654" height="1428" alt="image" src="https://github.com/user-attachments/assets/e942aa93-febd-40e3-9c3c-fcccd170e476" />
+
 
 
 ---
