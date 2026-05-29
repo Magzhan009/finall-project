@@ -64,28 +64,30 @@ The app uses Firebase Authentication, Cloud Firestore, and real-time data synchr
 ## Screenshots
 
 ### Login Screen
+<img width="658" height="1458" alt="image" src="https://github.com/user-attachments/assets/9474f273-8f07-4976-a960-867f291d1dfa" />
 
-(Add Screenshot Here)
 
 ### Registration Screen
 
-(Add Screenshot Here)
 
 ### Home Screen
 
-(Add Screenshot Here)
+<img width="658" height="1458" alt="image" src="https://github.com/user-attachments/assets/f4200114-076e-4d76-ae15-d687b4b67465" />
+
 
 ### Booking Screen
+<img width="658" height="1458" alt="image" src="https://github.com/user-attachments/assets/b8477e35-7af2-4b8e-9afb-33b54fae3617" />
 
-(Add Screenshot Here)
 
 ### Chat Screen
 
-(Add Screenshot Here)
+<img width="658" height="1458" alt="image" src="https://github.com/user-attachments/assets/d9375c9b-30b1-4412-933f-d78b7c14f750" />
+
 
 ### Profile Screen
 
-(Add Screenshot Here)
+<img width="658" height="1458" alt="image" src="https://github.com/user-attachments/assets/f97dd925-1ef9-47a6-b0df-e02350258d9c" />
+
 
 ---
 
